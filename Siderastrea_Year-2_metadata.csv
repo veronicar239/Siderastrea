@@ -1,0 +1,57 @@
+Sample_ID,Year_transplant,Origin_code,Origin_name,Origin_type,treatment_Origin-Dest,Destination_code,Destination_type,Destination_name,pH_Destination,RNA-seq,id,species,origin,transplant.saturation,transplant,transplant.position,Colony_ID,coral.collection.date_YYYY-MM-DD,RTE.deployment.date_YYYY-MM-DD,sampling.date.RNAlater_year2_YYYY-MM-DD
+PC_349_C_Sid_yr2,Year2,PC,Pargos.Control,Control,control_control,C,control,Control.Laja,High,Yes,349,Siderastrea ,Pargos Control,high,Control,C10,650,14/12/12,17/12/12,15/1/15
+PC_350_La_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,La,ojo,Ojo.Laja,Low,Yes,350,Siderastrea ,Pargos Control,low,Laja,L31,650,14/12/12,17/12/12,15/1/15
+PC_361_N_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,N,ojo,Ojo.Norte,Low,Yes,361,Siderastrea ,Pargos Control,low,Norte,N7,650,14/12/12,18/12/12,14/1/15
+PC_362_C_Sid_yr2,Year2,PC,Pargos.Control,Control,control_control,C,control,Control.Laja,High,Yes,362,Siderastrea ,Pargos Control,high,Control,C43,702,14/12/12,17/12/12,15/1/15
+PC_363_La_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,La,ojo,Ojo.Laja,Low,Yes,363,Siderastrea ,Pargos Control,low,Laja,L46,702,14/12/12,17/12/12,15/1/15
+PC_364_N_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,N,ojo,Ojo.Norte,Low,Yes,364,Siderastrea ,Pargos Control,low,Norte,N43,702,14/12/12,18/12/12,14/1/15
+PC_365_C_Sid_yr2,Year2,PC,Pargos.Control,Control,control_control,C,control,Control.Laja,High,Yes,365,Siderastrea ,Pargos Control,high,Control,C1,55,14/12/12,17/12/12,15/1/15
+PC_366_La_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,La,ojo,Ojo.Laja,Low,Yes,366,Siderastrea ,Pargos Control,low,Laja,L9,55,14/12/12,17/12/12,15/1/15
+PC_368_C_Sid_yr2,Year2,PC,Pargos.Control,Control,control_control,C,control,Control.Laja,High,Yes,368,Siderastrea ,Pargos Control,high,Control,C17,549,14/12/12,17/12/12,15/1/15
+PC_370_N_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,N,ojo,Ojo.Norte,Low,Yes,370,Siderastrea ,Pargos Control,low,Norte,N10,549,14/12/12,18/12/12,14/1/15
+PC_371_C_Sid_yr2,Year2,PC,Pargos.Control,Control,control_control,C,control,Control.Laja,High,Yes,371,Siderastrea ,Pargos Control,high,Control,C31,617,14/12/12,17/12/12,15/1/15
+PC_372_La_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,La,ojo,Ojo.Laja,Low,Yes,372,Siderastrea ,Pargos Control,low,Laja,L34,617,14/12/12,17/12/12,15/1/15
+PC_373_N_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,N,ojo,Ojo.Norte,Low,Yes,373,Siderastrea ,Pargos Control,low,Norte,N4,617,14/12/12,18/12/12,14/1/15
+PC_374_C_Sid_yr2,Year2,PC,Pargos.Control,Control,control_control,C,control,Control.Laja,High,Yes,374,Siderastrea ,Pargos Control,high,Control,C33,703,14/12/12,17/12/12,15/1/15
+PC_375_La_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,La,ojo,Ojo.Laja,Low,Yes,375,Siderastrea ,Pargos Control,low,Laja,L52,703,14/12/12,17/12/12,15/1/15
+PC_376_N_Sid_yr2,Year2,PC,Pargos.Control,Control,control_ojo,N,ojo,Ojo.Norte,Low,Yes,376,Siderastrea ,Pargos Control,low,Norte,N19,703,14/12/12,18/12/12,14/1/15
+PO_331_C_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_control,C,control,Control.Laja,High,Yes,331,Siderastrea ,Pargos Center,high,Control,C15,521,14/12/12,17/12/12,15/1/15
+PO_332_La_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,La,ojo,Ojo.Laja,Low,Yes,332,Siderastrea ,Pargos Center,low,Laja,L36,521,14/12/12,17/12/12,15/1/15
+PO_333_N_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,N,ojo,Ojo.Norte,Low,Yes,333,Siderastrea ,Pargos Center,low,Norte,N41,521,14/12/12,18/12/12,14/1/15
+PO_334_C_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_control,C,control,Control.Laja,High,Yes,334,Siderastrea ,Pargos Center,high,Control,C14,661,14/12/12,17/12/12,15/1/15
+PO_335_La_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,La,ojo,Ojo.Laja,Low,Yes,335,Siderastrea ,Pargos Center,low,Laja,L28,661,14/12/12,17/12/12,15/1/15
+PO_336_N_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,N,ojo,Ojo.Norte,Low,Yes,336,Siderastrea ,Pargos Center,low,Norte,N28,661,14/12/12,18/12/12,14/1/15
+PO_337_C_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_control,C,control,Control.Laja,High,Yes,337,Siderastrea ,Pargos Center,high,Control,C4,665,14/12/12,17/12/12,15/1/15
+PO_338_La_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,La,ojo,Ojo.Laja,Low,Yes,338,Siderastrea ,Pargos Center,low,Laja,L7,665,14/12/12,17/12/12,15/1/15
+PO_339_N_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,N,ojo,Ojo.Norte,Low,Yes,339,Siderastrea ,Pargos Center,low,Norte,N23,665,14/12/12,18/12/12,14/1/15
+PO_340_C_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_control,C,control,Control.Laja,High,Yes,340,Siderastrea ,Pargos Center,high,Control,C32,653,14/12/12,17/12/12,15/1/15
+PO_341_La_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,La,ojo,Ojo.Laja,Low,Yes,341,Siderastrea ,Pargos Center,low,Laja,L57,653,14/12/12,17/12/12,15/1/15
+PO_342_N_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,N,ojo,Ojo.Norte,Low,Yes,342,Siderastrea ,Pargos Center,low,Norte,N5,653,14/12/12,18/12/12,14/1/15
+PO_343_C_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_control,C,control,Control.Laja,High,Yes,343,Siderastrea ,Pargos Center,high,Control,C11,263,14/12/12,17/12/12,15/1/15
+PO_344_La_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,La,ojo,Ojo.Laja,Low,Yes,344,Siderastrea ,Pargos Center,low,Laja,L12,263,14/12/12,17/12/12,15/1/15
+PO_345_N_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,N,ojo,Ojo.Norte,Low,Yes,345,Siderastrea ,Pargos Center,low,Norte,N46,263,14/12/12,18/12/12,14/1/15
+PO_347_La_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,La,ojo,Ojo.Laja,Low,Yes,347,Siderastrea ,Pargos Center,low,Laja,L40,648,14/12/12,17/12/12,15/1/15
+PO_348_N_Sid_yr2,Year2,PO,Pargos.Ojo,Ojo,ojo_ojo,N,ojo,Ojo.Norte,Low,Yes,348,Siderastrea ,Pargos Center,low,Norte,N56,648,14/12/12,18/12/12,14/1/15
+R_003_C_Sid_yr2,Year2,R,Reef,Reef,reef_control,C,control,Control.Laja,High,Yes,3,Siderastrea ,Reef,high,Control,C36,448,15/12/12,17/12/12,15/1/15
+R_004_La_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,La,ojo,Ojo.Laja,Low,Yes,4,Siderastrea ,Reef,low,Laja,L16,448,15/12/12,17/12/12,15/1/15
+R_005_N_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,N,ojo,Ojo.Norte,Low,Yes,5,Siderastrea ,Reef,low,Norte,N42,448,15/12/12,18/12/12,14/1/15
+R_009_C_Sid_yr2,Year2,R,Reef,Reef,reef_control,C,control,Control.Laja,High,Yes,9,Siderastrea ,Reef,high,Control,C48,689,15/12/12,17/12/12,15/1/15
+R_010_La_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,La,ojo,Ojo.Laja,Low,Yes,10,Siderastrea ,Reef,low,Laja,L54,689,15/12/12,17/12/12,15/1/15
+R_011_N_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,N,ojo,Ojo.Norte,Low,Yes,11,Siderastrea ,Reef,low,Norte,N47,689,15/12/12,18/12/12,14/1/15
+R_012_C_Sid_yr2,Year2,R,Reef,Reef,reef_control,C,control,Control.Laja,High,Yes,12,Siderastrea ,Reef,high,Control,C21,61,15/12/12,17/12/12,15/1/15
+R_013_La_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,La,ojo,Ojo.Laja,Low,Yes,13,Siderastrea ,Reef,low,Laja,L39,61,15/12/12,17/12/12,15/1/15
+R_014_N_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,N,ojo,Ojo.Norte,Low,Yes,14,Siderastrea ,Reef,low,Norte,N51,61,15/12/12,18/12/12,14/1/15
+R_015_C_Sid_yr2,Year2,R,Reef,Reef,reef_control,C,control,Control.Laja,High,Yes,15,Siderastrea ,Reef,high,Control,C26,622,15/12/12,17/12/12,15/1/15
+R_017_N_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,N,ojo,Ojo.Norte,Low,Yes,17,Siderastrea ,Reef,low,Norte,N16,622,15/12/12,18/12/12,14/1/15
+R_018_C_Sid_yr2,Year2,R,Reef,Reef,reef_control,C,control,Control.Laja,High,Yes,18,Siderastrea ,Reef,high,Control,C52,647,15/12/12,17/12/12,15/1/15
+R_019_La_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,La,ojo,Ojo.Laja,Low,Yes,19,Siderastrea ,Reef,low,Laja,L29,647,15/12/12,17/12/12,15/1/15
+R_020_N_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,N,ojo,Ojo.Norte,Low,Yes,20,Siderastrea ,Reef,low,Norte,N21,647,15/12/12,18/12/12,14/1/15
+R_021_C_Sid_yr2,Year2,R,Reef,Reef,reef_control,C,control,Control.Laja,High,Yes,21,Siderastrea ,Reef,high,Control,C6,576,15/12/12,17/12/12,15/1/15
+R_022_La_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,La,ojo,Ojo.Laja,Low,Yes,22,Siderastrea ,Reef,low,Laja,L19,576,15/12/12,17/12/12,15/1/15
+R_024_C_Sid_yr2,Year2,R,Reef,Reef,reef_control,C,control,Control.Laja,High,Yes,24,Siderastrea ,Reef,high,Control,C22,678,15/12/12,17/12/12,15/1/15
+R_025_La_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,La,ojo,Ojo.Laja,Low,Yes,25,Siderastrea ,Reef,low,Laja,L47,678,15/12/12,17/12/12,15/1/15
+R_026_N_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,N,ojo,Ojo.Norte,Low,Yes,26,Siderastrea ,Reef,low,Norte,N24,678,15/12/12,18/12/12,14/1/15
+R_027_C_Sid_yr2,Year2,R,Reef,Reef,reef_control,C,control,Control.Laja,High,Yes,27,Siderastrea ,Reef,high,Control,C35,686,15/12/12,17/12/12,15/1/15
+R_029_N_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,N,ojo,Ojo.Norte,Low,Yes,29,Siderastrea ,Reef,low,Norte,N17,686,15/12/12,18/12/12,14/1/15
+R_030_C_Sid_yr2,Year2,R,Reef,Reef,reef_control,C,control,Control.Laja,High,Yes,30,Siderastrea ,Reef,high,Control,C46,472,15/12/12,17/12/12,15/1/15
+R_031_La_Sid_yr2,Year2,R,Reef,Reef,reef_ojo,La,ojo,Ojo.Laja,Low,Yes,31,Siderastrea ,Reef,low,Laja,L23,472,15/12/12,17/12/12,15/1/15
