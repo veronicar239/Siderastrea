@@ -248,6 +248,20 @@ prop.null[order(prop.null)]
 ```
 
 
+Removed additional outlier that was identified through below data exploration and evaluation:
+- smallest number of raw counts
+- identified as outlier in cluster dendrogram 
+- identified as outlier in PCA
+- very small sizefactor (0.06066512) 
+- very high proportion of null counts (73%)
+```{r}
+drop <- c("R_018_C_Sid_yr2")
+
+host_means_filtered <- host_means_filtered[,!(names(host_means_filtered) %in% drop)]
+meta <- meta[!(row.names(meta) %in% drop),]
+```
+
+
 ```{r}
 prop.null <- apply(host_means_filtered, 2, function(x) 100*mean(x==0))
 
@@ -548,7 +562,9 @@ plot(sort(sizeFactors(dds)))
 
 ### Normalization factor applied to each sample
 ```{r}
+#sort.list(sizeFactors(dds))
 sizeFactors(dds)
+order(sizeFactors(dds), decreasing = TRUE)
 ```
 
 
