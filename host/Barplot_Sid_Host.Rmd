@@ -6,8 +6,11 @@ output: html_document
 ---
 
 # Barplots of Differentially expressed genes
-## Coral host
 
+## Coral host
+### *Siderastrea*
+
+### Import libraries
 ```{r}
 library(ggplot2)
 library(scales)
@@ -15,11 +18,11 @@ library(dplyr)
 library(plyr)
 ```
 
-# Resources
+### Resources
 https://stackoverflow.com/questions/38268741/geom-bar-ggplot2-stacked-grouped-bar-plot-with-positive-and-negative-values-p
 
 
-# Set working directory
+### Set working directory
 ```{r}
 setwd("~/Documents/Rprojects/postdoc\ Rprojects/ODU_postdoc_Rprojects/Paper_Ojo_gene-expression/Siderastrea/host/")
 ```
@@ -70,6 +73,7 @@ de.genes <- readRDS("Sid_Host_DE_genes_OC_RC_padj.1.rds")
 # add group pairwise contrast label
 de.genes$group <- 'OC-RC'
 de.genes$group <- as.factor(de.genes$group)
+dim(de.genes)
 ```
 
 ### Count which genes are Upregulated versus Downregulated
@@ -98,6 +102,7 @@ de.genes <- readRDS("Sid_Host_DE_genes_LC_RC_padj.1.rds")
 # add group pairwise contrast label
 de.genes$group <- 'LC-RC'
 de.genes$group <- as.factor(de.genes$group)
+dim(de.genes)
 ```
 
 ### Count which genes are Upregulated versus Downregulated
@@ -158,6 +163,7 @@ de.genes <- readRDS("Sid_Host_DE_genes_LO_RO_padj.1.rds")
 # add group pairwise contrast label
 de.genes$group <- 'LO-RO'
 de.genes$group <- as.factor(de.genes$group)
+dim(de.genes)
 ```
 
 ### Count which genes are Upregulated versus Downregulated
@@ -186,6 +192,7 @@ de.genes <- readRDS("Sid_Host_DE_genes_OO_RO_padj.1.rds")
 # add group pairwise contrast label
 de.genes$group <- 'OO-RO'
 de.genes$group <- as.factor(de.genes$group)
+dim(de.genes)
 ```
 
 ### Count which genes are Upregulated versus Downregulated
@@ -231,6 +238,7 @@ de.genes <- readRDS("Sid_Host_DE_genes_OO_OC_padj.1.rds")
 # add group pairwise contrast label
 de.genes$group <- 'OO-OC'
 de.genes$group <- as.factor(de.genes$group)
+dim(de.genes)
 ```
 
 ### Count which genes are Upregulated versus Downregulated
@@ -266,6 +274,7 @@ de.genes <- readRDS("Sid_Host_DE_genes_RO_RC_padj.1.rds")
 # add group pairwise contrast label
 de.genes$group <- 'RO-RC'
 de.genes$group <- as.factor(de.genes$group)
+dim(de.genes)
 ```
 
 ### Count which genes are Upregulated versus Downregulated
@@ -297,6 +306,7 @@ de.genes <- readRDS("Sid_Host_DE_genes_OO_RC_padj.1.rds")
 # add group pairwise contrast label
 de.genes$group <- 'OO-RC'
 de.genes$group <- as.factor(de.genes$group)
+dim(de.genes)
 ```
 
 ### Count which genes are Upregulated versus Downregulated
@@ -330,6 +340,7 @@ de.genes <- readRDS("Sid_Host_DE_genes_OO_LC_padj.1.rds")
 # add group pairwise contrast label
 de.genes$group <- 'OO-LC'
 de.genes$group <- as.factor(de.genes$group)
+dim(de.genes)
 ```
 
 ### Count which genes are Upregulated versus Downregulated
@@ -389,7 +400,7 @@ plot.combo <- ggplot(summary2, aes(x = group, fill = LFC)) +
   scale_fill_manual("LFC", values=c("black", "#56B4E9"), labels=c("Down-regulated", "Up-regulated"), guide=guide_legend(reverse=TRUE)) + #colorblind friendly
   ylab("Differentially expressed genes") +
   xlab("Transplantation") + 
-  scale_y_continuous(limits = c(-650, 620), breaks = seq(-600, 600, by = 200)) +
+  scale_y_continuous(limits = c(-870, 500), breaks = seq(-800, 400, by = 200)) +
   theme_classic() +
   theme(legend.position = "bottom", panel.background = element_rect(colour = "black"), axis.text.x = element_text(angle = 45, vjust = 0.5)) #axis.text.x=element_text(vjust=0.5, size=10, face="italic"), 
 
@@ -450,7 +461,7 @@ plot.combo
 ```
 
 
-# Session Info
+### Session Info
 ```{r}
 sessionInfo()
 ```

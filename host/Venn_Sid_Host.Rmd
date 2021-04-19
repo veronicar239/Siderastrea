@@ -1,0 +1,354 @@
+---
+title: "Venn_Sid_Host"
+author: "Veronica Radice"
+date: "19/04/2021"
+output: html_document
+---
+
+# Venn diagrams
+## Differentially expressed genes
+
+## Coral Host
+## *Siderastrea*
+
+
+### Load packages
+```{r setup, include=FALSE}
+library(VennDiagram)
+library(limma)
+library(GOplot)
+library(RColorBrewer)
+```
+
+### Set working directory
+```{r}
+setwd("~/Documents/Rprojects/postdoc\ Rprojects/ODU_postdoc_Rprojects/Paper_Ojo_gene-expression/Siderastrea/host/")
+```
+
+
+# Import data
+
+Summary
+```{r}
+deg <- read.csv("DEG_summary_Sid_Host.csv", header = TRUE)
+deg <- deg[,2:4]
+deg
+```
+
+## Effect of Origin - corals transplanted to same Destination
+
+Absolute number of DEG adjusted p-value < 0.1
+
+## Lagoon vs. Reef corals transplanted to Ojo
+```{r}
+de.genes.Dest.Ojo_LO_RO <- readRDS("Sid_Host_DE_genes_LO_RO_padj.1.rds")
+de.genes.Dest.Ojo_LO_RO <- as.data.frame(de.genes.Dest.Ojo_LO_RO)
+#rownames(de.genes.Dest.Ojo_LO_RO) <- de.genes.Dest.Ojo_LO_RO$gene
+
+de.genes.Dest.Ojo_LO_RO$group <- 'LO-RO'
+de.genes.Dest.Ojo_LO_RO$group <- as.factor(de.genes.Dest.Ojo_LO_RO$group)
+
+de.genes.Dest.Ojo_LO_RO$expression <- ifelse(de.genes.Dest.Ojo_LO_RO$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Ojo_LO_RO$expression <- as.factor(de.genes.Dest.Ojo_LO_RO$expression)
+dim(de.genes.Dest.Ojo_LO_RO)
+```
+
+
+## Ojo vs. Reef corals transplanted to Ojo
+```{r}
+de.genes.Dest.Ojo_OO_RO <- readRDS("Sid_Host_DE_genes_OO_RO_padj.1.rds")
+de.genes.Dest.Ojo_OO_RO <- as.data.frame(de.genes.Dest.Ojo_OO_RO)
+#rownames(de.genes.Dest.Ojo_OO_RO) <- de.genes.Dest.Ojo_OO_RO$gene
+
+de.genes.Dest.Ojo_OO_RO$group <- 'OO-RO'
+de.genes.Dest.Ojo_OO_RO$group <- as.factor(de.genes.Dest.Ojo_OO_RO$group)
+
+de.genes.Dest.Ojo_OO_RO$expression <- ifelse(de.genes.Dest.Ojo_OO_RO$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Ojo_OO_RO$expression <- as.factor(de.genes.Dest.Ojo_OO_RO$expression)
+dim(de.genes.Dest.Ojo_OO_RO)
+```
+
+
+## Lagoon vs. Reef corals transplanted to Control
+```{r}
+de.genes.Dest.Control_LC_RC <- readRDS("Sid_Host_DE_genes_LC_RC_padj.1.rds")
+de.genes.Dest.Control_LC_RC <- as.data.frame(de.genes.Dest.Control_LC_RC)
+#rownames(de.genes.Dest.Control_LC_RC) <- de.genes.Dest.Control_LC_RC$gene
+
+de.genes.Dest.Control_LC_RC$group <- 'LC-RC'
+de.genes.Dest.Control_LC_RC$group <- as.factor(de.genes.Dest.Control_LC_RC$group)
+
+de.genes.Dest.Control_LC_RC$expression <- ifelse(de.genes.Dest.Control_LC_RC$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Control_LC_RC$expression <- as.factor(de.genes.Dest.Control_LC_RC$expression)
+dim(de.genes.Dest.Control_LC_RC)
+```
+
+
+## Ojo vs. Reef corals transplanted to Control
+```{r}
+de.genes.Dest.Control_OC_RC <- readRDS("Sid_Host_DE_genes_OC_RC_padj.1.rds")
+de.genes.Dest.Control_OC_RC <- as.data.frame(de.genes.Dest.Control_OC_RC)
+#rownames(de.genes.Dest.Control_OC_RC) <- de.genes.Dest.Control_OC_RC$gene
+
+de.genes.Dest.Control_OC_RC$group <- 'OC-RC'
+de.genes.Dest.Control_OC_RC$group <- as.factor(de.genes.Dest.Control_OC_RC$group)
+
+de.genes.Dest.Control_OC_RC$expression <- ifelse(de.genes.Dest.Control_OC_RC$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Control_OC_RC$expression <- as.factor(de.genes.Dest.Control_OC_RC$expression)
+dim(de.genes.Dest.Control_OC_RC)
+```
+
+## Reef-Ojo vs. Reef-Control
+
+```{r}
+de.genes.Dest.Control_RO_RC <- readRDS("Sid_Host_DE_genes_RO_RC_padj.1.rds")
+de.genes.Dest.Control_RO_RC <- as.data.frame(de.genes.Dest.Control_RO_RC)
+#rownames(de.genes.Dest.Control_RO_RC) <- de.genes.Dest.Control_RO_RC$gene
+
+de.genes.Dest.Control_RO_RC$group <- 'RO-RC'
+de.genes.Dest.Control_RO_RC$group <- as.factor(de.genes.Dest.Control_RO_RC$group)
+
+de.genes.Dest.Control_RO_RC$expression <- ifelse(de.genes.Dest.Control_RO_RC$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Control_RO_RC$expression <- as.factor(de.genes.Dest.Control_RO_RC$expression)
+dim(de.genes.Dest.Control_RO_RC)
+```
+
+
+```{r}
+# data <- deg[1:2,2:3]
+# data$n = abs(data$n)
+# data <- data %>% rename(n = "OC-LC")
+
+data <- deg[3:4,2:3]
+data$n = abs(data$n)
+data <- data %>% rename(n = "OC-RC")
+#data$`OC-RC` <- deg[3:4,3]
+#data$`OC-RC` = abs(data$`OC-RC`)
+
+data$`LC-RC` <- deg[5:6,3]
+data$`LC-RC` = abs(data$`LC-RC`)
+
+data$`LO-RO` <- deg[9:10,3]
+data$`LO-RO` = abs(data$`LO-RO`)
+
+data$`OO-RO` <- deg[11:12,3]
+data$`OO-RO` = abs(data$`OO-RO`)
+
+data$`RO-RC` <- deg[17:18,3]
+data$`RO-RC` = abs(data$`RO-RC`)
+
+data$LFC <- revalue(data$LFC, c("Down" = "down", "Up" = "up"))
+
+rownames(data) <- data[,1]
+data <- data[,-1]
+
+data
+```
+
+
+
+```{r}
+de.genes.Dest.Ojo_LO_RO %>% 
+  group_by(expression) %>% 
+  dplyr::summarise(count = n())
+```
+
+
+```{r}
+deg <- rbind(de.genes.Dest.Ojo_LO_RO, de.genes.Dest.Ojo_OO_RO, de.genes.Dest.Control_LC_RC, de.genes.Dest.Control_OC_RC, de.genes.Dest.Control_RO_RC)
+head(deg)
+```
+
+for GoVenn
+Requires data frame consisting of two columns: ID, logFC
+```{r}
+de.genes.Dest.Ojo_LO_RO <- de.genes.Dest.Ojo_LO_RO[,c(1,3)]
+names(de.genes.Dest.Ojo_LO_RO)[1] <- "ID"
+names(de.genes.Dest.Ojo_LO_RO)[2] <- "logFC"
+
+de.genes.Dest.Ojo_OO_RO <- de.genes.Dest.Ojo_OO_RO[,c(1,3)]
+names(de.genes.Dest.Ojo_OO_RO)[1] <- "ID"
+names(de.genes.Dest.Ojo_OO_RO)[2] <- "logFC"
+
+de.genes.Dest.Control_LC_RC <- de.genes.Dest.Control_LC_RC[,c(1,3)]
+names(de.genes.Dest.Control_LC_RC)[1] <- "ID"
+names(de.genes.Dest.Control_LC_RC)[2] <- "logFC"
+
+de.genes.Dest.Control_OC_RC <- de.genes.Dest.Control_OC_RC[,c(1,3)]
+names(de.genes.Dest.Control_OC_RC)[1] <- "ID"
+names(de.genes.Dest.Control_OC_RC)[2] <- "logFC"
+
+de.genes.Dest.Control_RO_RC <- de.genes.Dest.Control_RO_RC[,c(1,3)]
+names(de.genes.Dest.Control_RO_RC)[1] <- "ID"
+names(de.genes.Dest.Control_RO_RC)[2] <- "logFC"
+```
+
+
+
+
+##############################################################################
+
+# All DEG - 4-way venn comparing Control and Ojo destination pairwise contrasts
+```{r}
+venn.diagram(x = list(de.genes.Dest.Ojo_LO_RO$gene, de.genes.Dest.Ojo_OO_RO$gene, de.genes.Dest.Control_LC_RC$gene, de.genes.Dest.Control_OC_RC$gene, de.genes.Dest.Control_RO_RC$gene), 
+             category.names = c("Lagoon-Ojo vs Reef-Ojo", "Ojo-Ojo vs Reef-Ojo", "Lagoon-Control vs Reef-Control", "Ojo-Control vs Reef-Control", "Reef-Ojo vs Reef-Control"),
+         filename = 'Sid_Host_venn_all-DEG.png',
+        output = TRUE,
+        imagetype="png",
+        height = 2500, 
+        width = 4000, 
+        resolution = 300,
+        fill=c("cadetblue2", "darkseagreen2", "coral1", "deeppink3", "goldenrod"),
+        main.cex = 1.5,
+        sub.cex = 1.5,
+        cat.cex = 1.5,
+        cex = 1.5,
+        cat.default.pos = "outer",
+        cat.pos = c(-27, 27, 135, 135, 27),
+        cat.dist = c(0.055, 0.055, 0.055, 0.055, 0.055),
+        main = "Siderastrea",
+        scaled = FALSE)
+
+#cat.pos = c(0, 0),
+```
+
+
+
+
+
+Below is test of different Venn Diagram options
+
+
+##############################################################################
+
+## Using GoVenn from GoPlot
+
+```{r}
+GOVenn(de.genes.Dest.Ojo_LO_RO, de.genes.Dest.Ojo_OO_RO, de.genes.Dest.Control_LC_RC, de.genes.Dest.Control_OC_RC, de.genes.Dest.Control_RO_RC, lfc.col = c('cadetblue2', 'darkseagreen2', 'coral1', 'deeppink3', 'goldenrod'), label = c('Lagoon-Ojo vs Reef-Ojo', 'Ojo-Ojo vs Reef-Ojo', 'Lagoon-Control vs Reef-Control', 'Ojo-Control vs Reef-Control', 'Reef-Ojo vs Reef-Control'), plot = TRUE)
+```
+
+Can only do 3 contrasts at a time ??
+```{r}
+GOVenn(de.genes.Dest.Ojo_LO_RO, de.genes.Dest.Ojo_OO_RO, de.genes.Dest.Control_LC_RC, lfc.col = c('cadetblue2', 'darkseagreen2', 'coral1'), label = c('Lagoon-Ojo vs Reef-Ojo', 'Ojo-Ojo vs Reef-Ojo', 'Lagoon-Control vs Reef-Control'), plot = TRUE)
+```
+
+
+
+
+##############################################################################
+
+# Using limma 
+### include number of upregulated vs. downregulated DEG
+
+```{r}
+vennDiagram(data,
+            include=c("up", "down"),
+            counts.col=c("red", "blue"),
+            circle.col = c("cadetblue2", "darkseagreen2", "coral1", "deeppink3", "goldenrod"))
+```
+
+
+```{r}
+vennDiagram(deg,
+            include=c("up", "down"),
+            counts.col=c("red", "blue"),
+            circle.col = c("red", "blue", "green3", "orange"))
+```
+
+
+
+##############################################################################
+
+by lfc
+```{r}
+de.genes.Dest.Ojo_LO_RO <- de.genes.Dest.Ojo_LO_RO[,3]
+
+de.genes.Dest.Ojo_OO_RO <- de.genes.Dest.Ojo_OO_RO[,3]
+
+de.genes.Dest.Control_LC_RC <- de.genes.Dest.Control_LC_RC[,3]
+
+de.genes.Dest.Control_OC_RC <- de.genes.Dest.Control_OC_RC[,3]
+
+de.genes.Dest.Control_RO_RC <- de.genes.Dest.Control_RO_RC[,3]
+```
+
+by gene
+```{r}
+de.genes.Dest.Ojo_LO_RO <- de.genes.Dest.Ojo_LO_RO[,1]
+
+de.genes.Dest.Ojo_OO_RO <- de.genes.Dest.Ojo_OO_RO[,1]
+
+de.genes.Dest.Control_LC_RC <- de.genes.Dest.Control_LC_RC[,1]
+
+de.genes.Dest.Control_OC_RC <- de.genes.Dest.Control_OC_RC[,1]
+
+de.genes.Dest.Control_RO_RC <- de.genes.Dest.Control_RO_RC[,1]
+```
+
+```{r}
+par(mar=c(0,0,0,0),mfrow=c(1,1),bty="n")
+plot.new()
+venn.plot<-venn.diagram(list(de.genes.Dest.Ojo_LO_RO, de.genes.Dest.Ojo_OO_RO, de.genes.Dest.Control_LC_RC, de.genes.Dest.Control_OC_RC, de.genes.Dest.Control_RO_RC), 
+                        category.names = c("Lagoon-Ojo vs Reef-Ojo", "Ojo-Ojo vs Reef-Ojo", "Lagoon-Control vs Reef-Control", "Ojo-Control vs Reef-Control", "Reef-Ojo vs Reef-Control"),
+                        height = 2500,
+                        width = 4000,
+                        filename = 'Sid_Host_venn_all-DEG_test.png',
+                        output = TRUE,
+                        fill=c("cadetblue2", "darkseagreen2", "coral1", "deeppink3", "goldenrod"), 
+                        alpha=c(0.6, 0.6, 0.6, 0.6, 0.6), 
+                        cex = 2, 
+                        cat.fontface=4, 
+                        main="Siderastrea DEG")
+#grid.draw(venn.plot)
+```
+
+
+
+
+
+```{r}
+SCt1<-read.csv("Spist_CBASS_29T1_vs_27T1_temp_and_gen_model.csv",header=T)
+SCt2<-read.csv("Spist_CBASS_29T3_vs_27T3_temp_and_gen_model.csv",header=T)
+SRt1<-read.csv("Spist_RSS_29T1_vs_27T1_temp_and_gen_model.csv",header=T)
+SRt2<-read.csv("Spist_RSS_29T3_vs_27T3_temp_and_gen_model.csv",header=T)
+SCt1<-SCt1$X
+SCt2<-SCt2$X
+SRt1<-SRt1$X
+SRt2<-SRt2$X
+par(mar=c(0,0,0,0),mfrow=c(1,1),bty="n")
+plot.new()
+venn.plot<-venn.diagram(list(SCt1 ,SRt2, SCt2,SRt1), height = 100, width = 300,NULL, fill=c("green", "blue", "yellow","red"), alpha=c(0.2, 0.2,0.2,0.2), cex = 2, cat.fontface=4, category.names=c("Spist CBASS T1", "Spist RSS T2","Spist CBASS T2","Spist RSS T1"), main="Gene DEG for 27 vs 29.5°C")
+grid.draw(venn.plot)
+```
+
+
+
+```{r}
+# sample five-set Venn Diagram
+venn.plot <- venn.diagram(x = list(de.genes.Dest.Ojo_LO_RO, de.genes.Dest.Ojo_OO_RO, de.genes.Dest.Control_LC_RC, de.genes.Dest.Control_OC_RC, de.genes.Dest.Control_RO_RC),
+                          category.names = c("Lagoon-Ojo vs Reef-Ojo", "Ojo-Ojo vs Reef-Ojo", "Lagoon-Control vs Reef-Control", "Ojo-Control vs Reef-Control", "Reef-Ojo vs Reef-Control"),
+filename = "Venn_5set_pretty.tiff", col = "black",
+fill = c("dodgerblue", "goldenrod1", "darkorange1", "seagreen3", "orchid3"),
+alpha = 0.50,
+#cex = c(1.5, 1.5, 1.5, 1.5, 1.5, 1, 0.8, 1, 0.8, 1, 0.8, 1, 0.8,
+# 1, 0.8, 1, 0.55, 1, 0.55, 1, 0.55, 1, 0.55, 1, 0.55),
+cat.col = c("dodgerblue", "goldenrod1", "darkorange1", "seagreen3", "orchid3"),
+cat.cex = 1.5,
+cat.fontface = "bold",
+margin = 0.05)
+
+venn.plot
+```
+
+Also
+draw.quintuple.venn
+
+
+
+
+
+### Session Info
+```{r}
+sessionInfo()
+```
+

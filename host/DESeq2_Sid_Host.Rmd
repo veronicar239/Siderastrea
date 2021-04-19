@@ -1510,12 +1510,12 @@ write.csv(DE_LC_RC_padj.1, "Sid_Host_DE_genes_LC_RC_padj.1.csv")
 
 ### Pairwise contrast:  up- vs. down-regulated genes
 ```{r}
-up.results_LC_RC_padj.1 = row.names(results_LC_RC_.1[results_LC_RC_.1$padj<0.1 & !(is.na(results_LC_RC_.1$padj)) & results_LC_RC_.1$log2FoldChange>0,])
+up.results_LC_RC_padj.1 = row.names(res_LC_RC_.1_df[res_LC_RC_.1_df$padj<0.1 & !(is.na(res_LC_RC_.1_df$padj)) & res_LC_RC_.1_df$log2FoldChange>0,])
 
 up.results_LC_RC_padj.1 <- as.data.frame(up.results_LC_RC_padj.1)
 up.results_LC_RC_padj.1$DEG <- 'Up'
 
-down.results_LC_RC_padj.1 = row.names(results_LC_RC_.1[results_LC_RC_.1$padj<0.1 & !(is.na(results_LC_RC_.1$padj)) & results_LC_RC_.1$log2FoldChange<0,])
+down.results_LC_RC_padj.1 = row.names(res_LC_RC_.1_df[res_LC_RC_.1_df$padj<0.1 & !(is.na(res_LC_RC_.1_df$padj)) & res_LC_RC_.1_df$log2FoldChange<0,])
 
 down.results_LC_RC_padj.1 <- as.data.frame(down.results_LC_RC_padj.1)
 down.results_LC_RC_padj.1$DEG <- 'Down'
@@ -1706,9 +1706,7 @@ mcols(results_OO_LC_.1)$description
 
 
 
-
-
-# Session Info
+### Session Info
 ```{r}
 sessionInfo()
 ```

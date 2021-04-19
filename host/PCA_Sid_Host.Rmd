@@ -5,8 +5,13 @@ date: "09/03/2021"
 output: html_document
 ---
 
+# Principal Compoment Analysis
+## PERMANOVA
 
-# Import libraries
+# *Siderastrea*
+## Coral Host
+
+### Import libraries
 ```{r setup, include=FALSE}
 library(DESeq2)
 library(ggplot2)
@@ -31,7 +36,7 @@ names(park_palettes)
 ```
 
 
-# National Park color palettes
+### National Park color palettes
 ```{r message=FALSE}
 # check palette
 pal <- park_palette("Arches")
@@ -46,12 +51,12 @@ alt.palette <- c("#8c510a", "#d8b365", "#f6e8c3", "#c7eae5", "#5ab4ac", "#01665e
 ```
 
 
-# Set working directory
+### Set working directory
 ```{r}
 setwd("~/Documents/Rprojects/postdoc\ Rprojects/ODU_postdoc_Rprojects/Paper_Ojo_gene-expression/Siderastrea/host/")
 ```
 
-# Import metadata
+## Import metadata
 ```{r}
 meta <- read.csv("~/Documents/Rprojects/postdoc\ Rprojects/ODU_postdoc_Rprojects/Paper_Ojo_gene-expression/Siderastrea/Siderastrea_Year-2_metadata.csv", header=TRUE, row.names=1)
 
@@ -1161,7 +1166,7 @@ pairwise.adonis2(dist_overall ~ Origin_type * Destination_type, data = meta, per
 ```
 
 
-# Session Info
+### Session Info
 ```{r}
 sessionInfo()
 ```
