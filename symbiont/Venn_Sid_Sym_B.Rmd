@@ -1,0 +1,326 @@
+---
+title: "Venn_Sid_Sym_B"
+author: "Veronica Radice"
+date: "07/05/2021"
+output: html_document
+---
+
+
+# Venn diagrams
+## Differentially expressed genes
+
+## Coral Symbionts - *Breviolum*
+## *Siderastrea siderea*
+
+
+### Load packages
+```{r setup, include=FALSE}
+library(VennDiagram)
+library(limma)
+library(GOplot)
+library(RColorBrewer)
+library(dplyr)
+```
+
+### Set working directory
+```{r}
+setwd("~/Documents/Rprojects/postdoc\ Rprojects/ODU_postdoc_Rprojects/Paper_Ojo_gene-expression/Siderastrea/symbiont/")
+```
+
+
+# Import data
+
+Summary
+```{r}
+deg <- read.csv("DEG_summary_Sid_Symbiont_B.csv", header = TRUE)
+deg <- deg[,2:4]
+deg
+```
+
+## Effect of Origin - corals transplanted to same Destination
+
+Absolute number of DEG adjusted p-value < 0.1
+
+## Lagoon vs. Reef corals transplanted to Ojo
+```{r}
+de.genes.Dest.Ojo_LO_RO <- readRDS("Sid_Symbiont_Breviolum_DE_genes_LO_RO_padj.1.rds")
+de.genes.Dest.Ojo_LO_RO <- as.data.frame(de.genes.Dest.Ojo_LO_RO)
+#rownames(de.genes.Dest.Ojo_LO_RO) <- de.genes.Dest.Ojo_LO_RO$gene
+
+de.genes.Dest.Ojo_LO_RO$group <- 'LO-RO'
+de.genes.Dest.Ojo_LO_RO$group <- as.factor(de.genes.Dest.Ojo_LO_RO$group)
+
+de.genes.Dest.Ojo_LO_RO$expression <- ifelse(de.genes.Dest.Ojo_LO_RO$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Ojo_LO_RO$expression <- as.factor(de.genes.Dest.Ojo_LO_RO$expression)
+dim(de.genes.Dest.Ojo_LO_RO)
+```
+
+```{r}
+LO_RO.up <- subset(de.genes.Dest.Ojo_LO_RO, expression == "up")
+dim(LO_RO.up)
+
+LO_RO.down <- subset(de.genes.Dest.Ojo_LO_RO, expression == "down")
+dim(LO_RO.down)
+```
+
+
+## Ojo vs. Reef corals transplanted to Ojo
+```{r}
+de.genes.Dest.Ojo_OO_RO <- readRDS("Sid_Symbiont_Breviolum_DE_genes_OO_RO_padj.1.rds")
+de.genes.Dest.Ojo_OO_RO <- as.data.frame(de.genes.Dest.Ojo_OO_RO)
+#rownames(de.genes.Dest.Ojo_OO_RO) <- de.genes.Dest.Ojo_OO_RO$gene
+
+de.genes.Dest.Ojo_OO_RO$group <- 'OO-RO'
+de.genes.Dest.Ojo_OO_RO$group <- as.factor(de.genes.Dest.Ojo_OO_RO$group)
+
+de.genes.Dest.Ojo_OO_RO$expression <- ifelse(de.genes.Dest.Ojo_OO_RO$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Ojo_OO_RO$expression <- as.factor(de.genes.Dest.Ojo_OO_RO$expression)
+dim(de.genes.Dest.Ojo_OO_RO)
+```
+
+```{r}
+OO_RO.up <- subset(de.genes.Dest.Ojo_OO_RO, expression == "up")
+dim(OO_RO.up)
+
+OO_RO.down <- subset(de.genes.Dest.Ojo_OO_RO, expression == "down")
+dim(OO_RO.down)
+```
+
+
+## Lagoon vs. Reef corals transplanted to Control
+```{r}
+de.genes.Dest.Control_LC_RC <- readRDS("Sid_Symbiont_Breviolum_DE_genes_LC_RC_padj.1.rds")
+de.genes.Dest.Control_LC_RC <- as.data.frame(de.genes.Dest.Control_LC_RC)
+#rownames(de.genes.Dest.Control_LC_RC) <- de.genes.Dest.Control_LC_RC$gene
+
+de.genes.Dest.Control_LC_RC$group <- 'LC-RC'
+de.genes.Dest.Control_LC_RC$group <- as.factor(de.genes.Dest.Control_LC_RC$group)
+
+de.genes.Dest.Control_LC_RC$expression <- ifelse(de.genes.Dest.Control_LC_RC$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Control_LC_RC$expression <- as.factor(de.genes.Dest.Control_LC_RC$expression)
+dim(de.genes.Dest.Control_LC_RC)
+```
+
+```{r}
+LC_RC.up <- subset(de.genes.Dest.Control_LC_RC, expression == "up")
+dim(LC_RC.up)
+
+LC_RC.down <- subset(de.genes.Dest.Control_LC_RC, expression == "down")
+dim(LC_RC.down)
+```
+
+
+## Ojo vs. Reef corals transplanted to Control
+```{r}
+de.genes.Dest.Control_OC_RC <- readRDS("Sid_Symbiont_Breviolum_DE_genes_OC_RC_padj.1.rds")
+de.genes.Dest.Control_OC_RC <- as.data.frame(de.genes.Dest.Control_OC_RC)
+#rownames(de.genes.Dest.Control_OC_RC) <- de.genes.Dest.Control_OC_RC$gene
+
+de.genes.Dest.Control_OC_RC$group <- 'OC-RC'
+de.genes.Dest.Control_OC_RC$group <- as.factor(de.genes.Dest.Control_OC_RC$group)
+
+de.genes.Dest.Control_OC_RC$expression <- ifelse(de.genes.Dest.Control_OC_RC$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Control_OC_RC$expression <- as.factor(de.genes.Dest.Control_OC_RC$expression)
+dim(de.genes.Dest.Control_OC_RC)
+```
+
+
+```{r}
+OC_RC.up <- subset(de.genes.Dest.Control_OC_RC, expression == "up")
+dim(OC_RC.up)
+
+OC_RC.down <- subset(de.genes.Dest.Control_OC_RC, expression == "down")
+dim(OC_RC.down)
+```
+
+
+## Reef-Ojo vs. Reef-Control
+
+```{r}
+de.genes.Dest.Control_RO_RC <- readRDS("Sid_Symbiont_Breviolum_DE_genes_RO_RC_padj.1.rds")
+de.genes.Dest.Control_RO_RC <- as.data.frame(de.genes.Dest.Control_RO_RC)
+#rownames(de.genes.Dest.Control_RO_RC) <- de.genes.Dest.Control_RO_RC$gene
+
+de.genes.Dest.Control_RO_RC$group <- 'RO-RC'
+de.genes.Dest.Control_RO_RC$group <- as.factor(de.genes.Dest.Control_RO_RC$group)
+
+de.genes.Dest.Control_RO_RC$expression <- ifelse(de.genes.Dest.Control_RO_RC$log2FoldChange>0, 'up', 'down')
+de.genes.Dest.Control_RO_RC$expression <- as.factor(de.genes.Dest.Control_RO_RC$expression)
+dim(de.genes.Dest.Control_RO_RC)
+```
+
+```{r}
+RO_RC.up <- subset(de.genes.Dest.Control_RO_RC, expression == "up")
+dim(RO_RC.up)
+
+RO_RC.down <- subset(de.genes.Dest.Control_RO_RC, expression == "down")
+dim(RO_RC.down)
+```
+
+
+```{r}
+# data <- deg[1:2,2:3]
+# data$n = abs(data$n)
+# data <- data %>% rename(n = "OC-LC")
+
+data <- deg[1:2,2:3]
+data$n = abs(data$n)
+data <- data %>% dplyr::rename('OC-RC' = n)
+#data$`OC-RC` <- deg[3:4,3]
+#data$`OC-RC` = abs(data$`OC-RC`)
+
+data$`LC-RC` <- deg[3:4,3]
+data$`LC-RC` = abs(data$`LC-RC`)
+
+data$`LO-RO` <- deg[5:6,3]
+data$`LO-RO` = abs(data$`LO-RO`)
+
+data$`OO-RO` <- deg[7:8,3]
+data$`OO-RO` = abs(data$`OO-RO`)
+
+data$`RO-RC` <- deg[9:10,3]
+data$`RO-RC` = abs(data$`RO-RC`)
+
+data$LFC <- revalue(data$LFC, c("Down" = "down", "Up" = "up"))
+
+rownames(data) <- data[,1]
+data <- data[,-1]
+
+data
+```
+
+# All DEG - 5-way venn comparing Control and Ojo destination pairwise contrasts
+```{r}
+venn.diagram(x = list(data$`LO-RO`, data$`OO-RO`, data$`LC-RC`, data$`OC-RC`, data$`RO-RC`), 
+             category.names = c("Lagoon-Ojo vs Reef-Ojo", "Ojo-Ojo vs Reef-Ojo", "Lagoon-Control vs Reef-Control", "Ojo-Control vs Reef-Control", "Reef-Ojo vs Reef-Control"),
+         filename = 'Sid_Symbiont_Breviolum_venn_5-way.png',
+        output = TRUE,
+        imagetype="png",
+        height = 2500, 
+        width = 4000, 
+        resolution = 300,
+        fill=c("cadetblue2", "darkseagreen2", "coral1", "deeppink3", "goldenrod"),
+        main.cex = 1.5,
+        sub.cex = 1.5,
+        cat.cex = 1.5,
+        cex = 1.5,
+        cat.default.pos = "outer",
+        cat.pos = c(-27, 27, 135, 135, 27),
+        cat.dist = c(0.055, 0.055, 0.055, 0.055, 0.055),
+        main = "Siderastrea Symbiont",
+        scaled = FALSE)
+
+#cat.pos = c(0, 0),
+```
+
+
+## Upregulated genes - with labels for reference
+```{r}
+venn.diagram(x = list(LO_RO.up$gene, OO_RO.up$gene, LC_RC.up$gene, OC_RC.up$gene, RO_RC.up$gene), 
+             category.names = c("Lagoon-Ojo vs Reef-Ojo", "Ojo-Ojo vs Reef-Ojo", "Lagoon-Control vs Reef-Control", "Ojo-Control vs Reef-Control", "Reef-Ojo vs Reef-Control"),
+         filename = 'Sid_Symbiont_Breviolum_venn_up_label.png',
+        output = TRUE,
+        imagetype="png",
+        height = 2500, 
+        width = 4000, 
+        resolution = 300,
+        fill=c("cadetblue2", "darkseagreen2", "coral1", "deeppink3", "goldenrod"),
+        main.cex = 1.5,
+        sub.cex = 1.5,
+        cat.cex = 1.5,
+        cex = 1.5,
+        cat.default.pos = "outer",
+        cat.pos = c(0, 0, 0, 0, 0), #c(0, 60, 150, 210, 350)
+        cat.dist = c(0.055, 0.055, 0.055, 0.055, -0.1),
+        main = "",
+        scaled = FALSE)
+
+#        cat.pos = c(-27, 27, 135, 135, 27),
+#        cat.dist = c(0.055, 0.055, 0.055, 0.055, 0.055),
+```
+
+
+## Upregulated genes
+```{r}
+venn.diagram(x = list(LO_RO.up$gene, OO_RO.up$gene, LC_RC.up$gene, OC_RC.up$gene, RO_RC.up$gene), 
+             category.names = c("", "", "", "", ""),
+         filename = 'Sid_Symbiont_Breviolum_venn_up.png',
+        output = TRUE,
+        imagetype="png",
+        height = 2500, 
+        width = 4000, 
+        resolution = 300,
+        fill=c("cadetblue2", "darkseagreen2", "coral1", "deeppink3", "goldenrod"),
+        main.cex = 1.5,
+        sub.cex = 1.5,
+        cat.cex = 1.5,
+        cex = 1.5,
+        cat.default.pos = "outer",
+        cat.pos = c(0, 0, 0, 0, 0), #c(0, 60, 150, 210, 350)
+        cat.dist = c(0.055, 0.055, 0.055, 0.055, -0.1),
+        main = "",
+        scaled = FALSE)
+
+#        cat.pos = c(-27, 27, 135, 135, 27),
+#        cat.dist = c(0.055, 0.055, 0.055, 0.055, 0.055),
+```
+
+
+## Downregulated genes
+```{r}
+venn.diagram(x = list(LO_RO.down$gene, OO_RO.down$gene, LC_RC.down$gene, OC_RC.down$gene, RO_RC.down$gene), 
+             category.names = c("", "", "", "", ""),
+         filename = 'Sid_Symbiont_Breviolum_venn_down.png',
+        output = TRUE,
+        imagetype="png",
+        height = 2500, 
+        width = 4000, 
+        resolution = 300,
+        fill=c("cadetblue2", "darkseagreen2", "coral1", "deeppink3", "goldenrod"),
+        main.cex = 1.5,
+        sub.cex = 1.5,
+        cat.cex = 1.5,
+        cex = 1.5,
+        cat.default.pos = "outer",
+        cat.pos = c(0, 0, 0, 0, 0), #c(0, 60, 150, 210, 350)
+        cat.dist = c(0.055, 0.055, 0.055, 0.055, -0.1),
+        main = "",
+        scaled = FALSE)
+
+#        cat.pos = c(-27, 27, 135, 135, 27),
+#        cat.dist = c(0.055, 0.055, 0.055, 0.055, 0.055),
+```
+
+## Downregulated genes - with labels
+```{r}
+venn.diagram(x = list(LO_RO.down$gene, OO_RO.down$gene, LC_RC.down$gene, OC_RC.down$gene, RO_RC.down$gene), 
+             category.names = c("Lagoon-Ojo vs Reef-Ojo", "Ojo-Ojo vs Reef-Ojo", "Lagoon-Control vs Reef-Control", "Ojo-Control vs Reef-Control", "Reef-Ojo vs Reef-Control"),
+         filename = 'Sid_Symbiont_Breviolum_venn_down_label.png',
+        output = TRUE,
+        imagetype="png",
+        height = 2500, 
+        width = 4000, 
+        resolution = 300,
+        fill=c("cadetblue2", "darkseagreen2", "coral1", "deeppink3", "goldenrod"),
+        main.cex = 1.5,
+        sub.cex = 1.5,
+        cat.cex = 1.5,
+        cex = 1.5,
+        cat.default.pos = "outer",
+        cat.pos = c(0, 0, 0, 0, 0), #c(0, 60, 150, 210, 350)
+        cat.dist = c(0.055, 0.055, 0.055, 0.055, -0.1),
+        main = "",
+        scaled = FALSE)
+
+#        cat.pos = c(-27, 27, 135, 135, 27),
+#        cat.dist = c(0.055, 0.055, 0.055, 0.055, 0.055),
+```
+
+
+
+
+### Session Info
+```{r}
+sessionInfo()
+```
+
